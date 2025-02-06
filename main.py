@@ -26,11 +26,11 @@ love(t)
 
 # Save the drawing as an image
 canvas = screen.getcanvas()
-canvas.postscript(file="love_drawing.eps")
+canvas.postscript(file="love_drawing.eps")  # Save as EPS
 
-# Convert EPS to PNG (optional, requires ImageMagick)
-# import os
-# os.system("convert love_drawing.eps love_drawing.png")
+# Optional: Convert EPS to PNG (requires ImageMagick)
+import os
+os.system("convert love_drawing.eps love_drawing.png")
 
 # Close the turtle graphics window
 turtle.bye()
