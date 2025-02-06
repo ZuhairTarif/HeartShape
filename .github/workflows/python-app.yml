@@ -1,42 +1,30 @@
+# .github/workflows/python-app.yml
 name: Publish Turtle Script
 
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Optional, only if you have dependencies
+    - name: Run tests
+      run: |
+        pytest
 
-      - name: Install ImageMagick
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y imagemagick
-
-      - name: Run Turtle Script
-        run: |
-          python main.py
-
-      - name: Convert EPS to PNG
-        run: |
-          convert love_drawing.eps love_drawing.png
-
-      - name: Upload PNG as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: love-drawing
-          path: love_drawing.png
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4  # Updated version
+      with:
+        name: test-results
+        path: test-results/
