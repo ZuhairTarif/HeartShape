@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Turtle Script
         run: |
-          python love_turtle.py
+          python main.py
 
       - name: Convert EPS to PNG (optional)
         run: |
