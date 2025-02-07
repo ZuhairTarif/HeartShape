@@ -1,4 +1,4 @@
-name: Publish Turtle Script
+name: Publish Love Drawing
 
 on: [push, pull_request]
 
@@ -19,18 +19,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install ImageMagick (for EPS to PNG conversion)
+    - name: Install Matplotlib (for drawing the heart shape)
       run: |
-        sudo apt-get update
-        sudo apt-get install -y imagemagick
+        pip install matplotlib
 
-    - name: Run Turtle Script
+    - name: Run Python Script to Create Heart Drawing
       run: |
         python main.py
-
-    - name: Convert EPS to PNG (optional)
-      run: |
-        convert love_drawing.eps love_drawing.png
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
