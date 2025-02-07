@@ -1,4 +1,4 @@
-name: Publish Love Drawing
+name: Publish Heart Shape
 
 on: [push, pull_request]
 
@@ -19,16 +19,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install Matplotlib (for drawing the heart shape)
-      run: |
-        pip install matplotlib
-
-    - name: Run Python Script to Create Heart Drawing
+    - name: Run Python Script
       run: |
         python main.py
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: love-drawing
-        path: images/love_drawing.png
+        name: heart_shape
+        path: heart_shape.png
