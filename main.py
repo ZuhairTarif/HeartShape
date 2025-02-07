@@ -1,5 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+
+
+if not os.path.exists('images'):
+    os.makedirs('images')
 
 theta = np.linspace(0, 2 * np.pi, 1000)
 x = 16 * np.sin(theta)**3
