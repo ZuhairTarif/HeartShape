@@ -28,15 +28,3 @@ jobs:
       with:
         name: heart_shape
         path: heart_shape.png
-  release:
-    name: release
-    runs-on: ubuntu-latest
-    needs: build
-    steps: 
-      -name: Download Artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: heart_shape
-      -name: Artifact Download
-       run: ls -R
-      
