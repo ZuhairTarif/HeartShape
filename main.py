@@ -1,32 +1,15 @@
-import turtle
-import math
+import matplotlib.pyplot as plt
+import numpy as np
 
-# Set up the screen (disable automatic updates for headless environments)
-screen = turtle.Screen()
-screen.setup(width=600, height=600)
-screen.tracer(0)  # Disable automatic screen updates
+theta = np.linspace(0, 2 * np.pi, 1000)
+x = 16 * np.sin(theta)**3
+y = 13 * np.cos(theta) - 5 * np.cos(2 * theta) - 2 * np.cos(3 * theta) - np.cos(4 * theta)
 
-# Create the turtle
-t = turtle.Turtle()
-t.speed(0)
-t.color("red")
+plt.figure(figsize=(6, 6))
+plt.plot(x, y, color="red")
+plt.axis('off')  # Hide axes
+plt.gca().set_aspect('equal', adjustable='box')
 
-# Define the drawing function for the heart shape
-def love(t):
-    for n in range(0, 360, 1):
-        x = 16 * math.sin(math.radians(n))**3
-        y = 13 * math.cos(math.radians(n)) - 5 * math.cos(2 * math.radians(n)) - 2 * math.cos(3 * math.radians(n)) - math.cos(4 * math.radians(n))
-        t.goto(x, y)
+plt.savefig("love_drawing.png", dpi=300, bbox_inches='tight', pad_inches=0)
 
-# Draw the shape
-t.penup()
-t.goto(0, 0)
-t.pendown()
-love(t)
-
-# Save the drawing as an EPS file (this works in headless mode)
-canvas = screen.getcanvas()
-canvas.postscript(file="love_drawing.eps")  # Save as EPS
-
-# Close the turtle graphics window
-turtle.bye()
+plt.show()
