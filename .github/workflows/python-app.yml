@@ -31,4 +31,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: love-drawing
-        path: love_drawing.png
+        path: images/love_drawing.png
