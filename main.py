@@ -1,7 +1,7 @@
 import turtle
 import math
 
-# Set up the screen
+# Set up the screen (disable automatic updates for headless environments)
 screen = turtle.Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)  # Disable automatic screen updates
@@ -11,7 +11,7 @@ t = turtle.Turtle()
 t.speed(0)
 t.color("red")
 
-# Define the drawing function
+# Define the drawing function for the heart shape
 def love(t):
     for n in range(0, 360, 1):
         x = 16 * math.sin(math.radians(n))**3
@@ -24,13 +24,9 @@ t.goto(0, 0)
 t.pendown()
 love(t)
 
-# Save the drawing as an image
+# Save the drawing as an EPS file (this works in headless mode)
 canvas = screen.getcanvas()
 canvas.postscript(file="love_drawing.eps")  # Save as EPS
-
-# Optional: Convert EPS to PNG (requires ImageMagick)
-import os
-os.system("convert love_drawing.eps love_drawing.png")
 
 # Close the turtle graphics window
 turtle.bye()
