@@ -10,6 +10,6 @@ plt.plot(x, y, color="red")
 plt.axis('off')  # Hide axes
 plt.gca().set_aspect('equal', adjustable='box')
 
-plt.savefig("love_drawing.png", dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig("images/love_drawing.png", dpi=300, bbox_inches='tight', pad_inches=0)
 
 plt.show()
