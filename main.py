@@ -7,9 +7,9 @@ y = 13 * np.cos(theta) - 5 * np.cos(2 * theta) - 2 * np.cos(3 * theta) - np.cos(
 
 plt.figure(figsize=(6, 6))
 plt.plot(x, y, color="red")
-plt.axis('off')  # Hide axes
+plt.axis('off')
 plt.gca().set_aspect('equal', adjustable='box')
 
-plt.savefig("images/love_drawing.png", dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig("heart_shape.png", dpi=300, bbox_inches='tight', pad_inches=0)
 
 plt.show()
